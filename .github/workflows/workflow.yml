@@ -19,3 +19,15 @@ jobs:
             java-version: 11
         - name: Maven Package
           run: mvn clean package
+        - name: Login to Docker Hub
+          uses: docker/login-action@v2
+          with:
+            username: ${{secrets.DOCKERHUB_USERNAME}}
+            password: ${{secrets.DOCKERHUB_TOKEN}}
+        - name: Build docker image
+          run: |
+           docker build -t clients:clients .
+        - name: Push Docker image
+          run: |
+            docker tag clients:clients vmedinam24/clients:clients
+            docker push vmedinam24/clients:clients
