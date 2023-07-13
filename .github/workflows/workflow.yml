@@ -26,8 +26,8 @@ jobs:
             password: ${{secrets.DOCKERHUB_TOKEN}}
         - name: Build docker image
           run: |
-           docker build -t clients:clientsv2 .
+           docker build -t clients:clientsv3 .
         - name: Push Docker image
           run: |
-            docker tag clients:clientsv2 vmedinam24/clients:clientsv2
-            docker push vmedinam24/clients:clientsv2
+            docker tag clients:clientsv3 vmedinam24/clients:clientsv3
+            docker push vmedinam24/clients:clientsv3
